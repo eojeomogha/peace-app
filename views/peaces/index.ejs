@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Offenders</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h2>All Offenders</h2>
+  <a href="/new">Create New Offender</a>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Game</th>
+        <th>When</th>
+        <th>Troll</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% peaces.forEach((peace)=> { %>
+        <tr>
+          <td><a href="/peaces/<%= peace.id %>"><%= peace.name %></a></td>
+          <td><%= peace.game %></td>
+          <td><%= peace.when.toISOString().split('T')[0] %></td>
+          <td><%= peace.troll %></td>
+          <td>
+            <form action="/peaces/<%= peace.id %>?_method=PUT" method="POST">
+              <input type="submit" value="Edit"/>
+            </form>
+          </td>
+          <td>
+            <form action="/peaces/<%= peace.id %>?_method=DELETE" method="POST">
+              <input type="submit" value="Delete"/>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      width: auto;
+      table-layout: fixed;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    td:nth-child(2) {
+      width: 50%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  </style>
+</head>
+<body>
+  <a href="javascript:history.back()">Back</a>
+  <h1><%= peace.name %></h1>
+  <table>
+    <tr>
+      <th>Field</th>
+      <th>Value</th>
+    </tr>
+    <tr>
+      <td>Name:</td>
+      <td><%= peace.name %></td>
+    </tr>
+    <tr>
+      <td>Game:</td>
+      <td><%= peace.game %></td>
+    </tr>
+    <tr>
+      <td>When:</td>
+      <td><%= peace.when %></td>
+    </tr>
+    <tr>
+      <td>Troll:</td>
+      <td><%= peace.troll %></td>
+    </tr>
+    <tr>
+      <td>Details:</td>
+      <td><%= peace.details %></td>
+    </tr>
+  </table>
+  <a href="/edit/<%= peace.id %>">Update Offence</a> 
+  <form action="/peaces/<%= peace.id %>/peace" method="POST">
+    <button type="submit">Peace</button>
+  </form>
+  <form action="/peaces/<%= peace.id %>/lickback" method="POST">
+    <button type="submit">Get Yo Lick Back</button>
+  </form>
+</body>
+</html>
