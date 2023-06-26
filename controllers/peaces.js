@@ -2,6 +2,7 @@ const { default: mongoose } = require('mongoose');
 const Peace = require('../models/peace');
 
 module.exports = {
+  home,
   show, 
   index,
   new: newPage,
@@ -12,6 +13,10 @@ module.exports = {
 }
 
 //============================= GET FUNCTIONS=========================//
+function home(req, res) {
+  res.render('peaces/home'); 
+}
+
 async function index(req, res){
   try {
     const peaces = await Peace.find({})
@@ -55,7 +60,7 @@ async function edit(req, res){
 async function create(req, res) {
   try {
     await Peace.create(req.body)
-    res.redirect('/')
+    res.redirect('/all')
   } catch {
     console.log('error')
   }
@@ -64,7 +69,7 @@ async function create(req, res) {
 async function update(req, res) {
   try {
     await Peace.findByIdAndUpdate(req.params.id, req.body)
-    res.redirect('/' + req.params.id)
+    res.redirect('/all' + req.params.id)
   } catch {
     console.log('error')
   }
@@ -73,7 +78,7 @@ async function update(req, res) {
 async function deletePage(req, res) {
   try{
     await Peace.findByIdAndRemove(req.params.id)
-    res.redirect('/')
+    res.redirect('/all')
   } catch{
     console.log('error')
   }

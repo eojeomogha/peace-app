@@ -19,4 +19,8 @@ const peaceSchema = new Schema({
   details: String
 })
 
+// Add boolean field hasRevengeHappened? = False
+// In controller, find everyone is boolean = false.
+
+
 module.exports = mongoose.model('Peace', peaceSchema)

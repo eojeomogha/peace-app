@@ -24,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
 app.use('/', peacesRouter);
+//app.use('/', indexRouter);
 app.use('/peaces', peacesRouter);
 
 // catch 404 and forward to error handler

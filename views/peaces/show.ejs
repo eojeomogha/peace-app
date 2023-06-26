@@ -1,3 +1,5 @@
+<%- include('../partials/header') %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,11 +58,12 @@
     </tr>
   </table>
   <a href="/edit/<%= peace.id %>">Update Offence</a> 
-  <form action="/peaces/<%= peace.id %>/peace" method="POST">
-    <button type="submit">Peace</button>
+  <form action="/peaces/<%= peace.id %>?_method=DELETE" method="POST">
+    <input type="submit" value="Peace"/>
   </form>
   <form action="/peaces/<%= peace.id %>/lickback" method="POST">
     <button type="submit">Get Yo Lick Back</button>
   </form>
 </body>
 </html>
+

@@ -18,7 +18,7 @@
       <% }) %>
     </select>
 
-    <input type="date" name="when" value="<%= peace.when.toISOString().split('T')[0] %>">
+    <input type="date" name="when" value="<%= peace.when.toLocaleTimeString() %>">
     
     <select name="troll">
       <% ['Cheater', 'Griefer', 'Inter', 'Racist', 'Toxic'].forEach(function(option) { %>
