@@ -3,7 +3,8 @@ const Peace = require('../models/peace');
 
 module.exports = {
   home,
-  show, 
+  show,
+  report, 
   index,
   new: newPage,
   edit,
@@ -64,6 +65,10 @@ async function show(req, res,){
 
 function newPage(req, res) {
   res.render('peaces/new')
+}
+
+function report(req, res) {
+  res.render('peaces/report');
 }
 
 async function edit(req, res){

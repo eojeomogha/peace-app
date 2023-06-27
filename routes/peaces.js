@@ -4,6 +4,7 @@ var router = express.Router();
 const peacesCtrl = require('../controllers/peaces');
 
 router.get('/', peacesCtrl.home);
+router.get('/reports', peacesCtrl.report);
 router.get('/all', peacesCtrl.index);
 router.get('/new', peacesCtrl.new);
 router.get('/edit/:id', peacesCtrl.edit);
