@@ -11,13 +11,14 @@
   <div><canvas id="trollTypeChart"></canvas></div>
   <script>
   document.addEventListener('DOMContentLoaded', function() {
-  const trollTypes = ['Cheater', 'Griefer', 'Inter', 'Racist', 'Toxic'];
-  const trollTypeCounts = countTrollTypes(trollTypes);
+    const trollTypes = ['Cheater', 'Griefer', 'Inter', 'Racist', 'Toxic'];
+const reports = <%- JSON.stringify(reports) %>;
+const trollTypeCounts = countTrollTypes(trollTypes);
   
   // Function to count troll types
   function countTrollTypes(types) {
     const counts = {};
-    console.log(reports)
+
     types.forEach(type => {
       const count = reports.filter(peace => peace.troll === type).length;
       counts[type] = count;
@@ -26,7 +27,7 @@
   }
 
   console.log(trollTypes);
-});
+
 
 
   // Chart.js documentation
@@ -52,3 +53,4 @@
     }
   });
 });
+</script>

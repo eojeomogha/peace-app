@@ -10,7 +10,8 @@ module.exports = {
   edit,
   create,
   update,
-  delete: deletePage
+  delete: deletePage,
+  report
 }
 
 //============================= GET FUNCTIONS=========================//
@@ -108,4 +109,11 @@ async function deletePage(req, res) {
   } catch{
     console.log('error')
   }
+}
+
+async function report(req, res) {
+	const context = {
+		reports: await Peace.find({})
+	}
+  res.render('peaces/report', context);
 }
