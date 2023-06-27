@@ -3,9 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Report</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <h2>Reports here!</h2>
-</body>
-</html>
+  <div><canvas id="trollTypeChart"></canvas></div>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+  const trollTypes = ['Cheater', 'Griefer', 'Inter', 'Racist', 'Toxic'];
+  const trollTypeCounts = countTrollTypes(trollTypes);
+  
+  // Function to count troll types
+  function countTrollTypes(types) {
+    const counts = {};
+    console.log(reports)
+    types.forEach(type => {
+      const count = reports.filter(peace => peace.troll === type).length;
+      counts[type] = count;
+    });
+    return Object.values(counts);
+  }
+
+  console.log(trollTypes);
+});
+
+
+  // Chart.js documentation
+  const ctx = document.getElementById('trollTypeChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: trollTypes,
+      datasets: [{
+        label: 'Troll Type Statistics',
+        data: countTrollTypes(trollTypes),
+        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true,
+          stepSize: 1
+        }
+      }
+    }
+  });
+});

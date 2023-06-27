@@ -50,8 +50,6 @@ async function index(req, res) {
   }
 }
 
-
-
 async function show(req, res,){
   try {
     const peace = await Peace.findById(req.params.id)
