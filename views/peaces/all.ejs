@@ -1,0 +1,25 @@
+<!-- <%- include('../partials/header') %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Head content -->
+</head>
+<body>
+  <h1>All Offenders</h1>
+
+  <form action="/all" method="GET">
+    <input type="text" name="search" placeholder="Search...">
+    <button type="submit">Search</button>
+  </form>
+
+  <% peaces.forEach((peace) => { %>
+    <h2><a href="/peaces/<%= peace.id %>"><%= peace.name %></a></h2>
+    <p><%= peace.game %></p>
+    <p><%= peace.when %></p>
+    <p><%= peace.troll %></p>
+    <p><%= peace.details %></p>
+  <% }) %>
+
+</body>
+</html> -->

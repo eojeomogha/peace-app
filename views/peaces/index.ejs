@@ -1,3 +1,5 @@
+<%- include('../partials/header') %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +8,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>All Offenders</title>
   <style>
+    .pagination-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+    }
+
     table {
       border-collapse: collapse;
       width: 100%;
@@ -19,6 +33,17 @@
 </head>
 <body>
   <h2>All Offenders</h2>
+  
+  <!-- Search portion -->
+  <div class="search-container">
+    <div class="search-form">
+      <form action="/all" method="GET">
+        <input type="text" name="search" value="<%= searchKeyword %>" placeholder="Search...">
+        <button type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+
   <a href="/new">Create New Offender</a>
   <table>
     <thead>
@@ -52,5 +77,26 @@
       <% }) %>
     </tbody>
   </table>
+
+  <!-- Pagination Portion -->
+  <div class="pagination-container">
+    <div class="pagination">
+      <% if (currentPage > 1) { %>
+        <a href="/all?page=<%= currentPage - 1 %>">Previous</a>
+      <% } %>
+
+      <% for (let i = 1; i <= totalPages; i++) { %>
+        <% if (i === currentPage) { %>
+          <span><%= i %></span>
+        <% } else { %>
+          <a href="/all?page=<%= i %>"><%= i %></a>
+        <% } %>
+      <% } %>
+
+      <% if (currentPage < totalPages) { %>
+        <a href="/all?page=<%= currentPage + 1 %>">Next</a>
+      <% } %>
+    </div>
+  </div>
 </body>
 </html>
