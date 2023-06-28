@@ -64,7 +64,7 @@
           <td><%= peace.when.toISOString().split('T')[0] %></td>
           <td><%= peace.troll %></td>
           <td>
-            <form action="/peaces/<%= peace.id %>?_method=PUT" method="POST">
+            <form action="/peaces/edit/<%= peace.id %>" method="GET">
               <input type="submit" value="Edit"/>
             </form>
           </td>

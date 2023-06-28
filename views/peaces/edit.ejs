@@ -1,18 +1,16 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Edit Page</title>
 </head>
 <body>
   <a href="javascript:history.back()">Back</a>
   <h1>Edit Page</h1>
   <form action="/peaces/<%= peace.id %>?_method=PUT" method="POST">
-    <input type="text" name="name" value="<%=peace.name%>"/>
+    <input type="text" name="name" value="<%= peace.name %>"/>
 
     <select name="game">
       <% ['DOTA', 'Irl', 'LoL', 'Smite'].forEach(function(option) { %>
@@ -20,7 +18,7 @@
       <% }) %>
     </select>
 
-    <input type="date" name="when" value="<%= peace.when.toLocaleTimeString() %>">
+    <input type="date" name="when" value="<%= formattedDate %>">
     
     <select name="troll">
       <% ['Cheater', 'Griefer', 'Inter', 'Racist', 'Toxic'].forEach(function(option) { %>
@@ -28,7 +26,7 @@
       <% }) %>
     </select>
 
-    <input type="text" name="details" value="<%=peace.details%>"/>
+    <input type="text" name="details" value="<%= peace.details %>"/>
 
     <button type="submit">Update Troll</button>
   </form>

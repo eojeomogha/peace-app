@@ -22,7 +22,7 @@ function home(req, res) {
 async function index(req, res) {
   // Pagination function
   const page = parseInt(req.query.page) || 1; 
-  const itemsPerPage = 10; 
+  const itemsPerPage = 6; 
 
   try {
     // Search function
@@ -70,16 +70,20 @@ function report(req, res) {
   res.render('peaces/report');
 }
 
-async function edit(req, res){
+async function edit(req, res) {
   try {
-    const peace = await Peace.findById(req.params.id)
+    const peace = await Peace.findById(req.params.id);
+    const formattedDate = peace.when.toISOString().split('T')[0];
+
     res.render('peaces/edit', {
-      peace
-    })
+      peace,
+      formattedDate,
+    });
   } catch {
-    console.log('error')
+    console.log('error');
   }
 }
+
 
 //============================= ACTIONS FUNCTIONS =========================//
 
@@ -96,7 +100,7 @@ async function create(req, res) {
 async function update(req, res) {
   try {
     await Peace.findByIdAndUpdate(req.params.id, req.body)
-    res.redirect('/all' + req.params.id)
+    res.redirect('/all')
   } catch {
     console.log('error')
   }
