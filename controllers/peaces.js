@@ -11,7 +11,8 @@ module.exports = {
   create,
   update,
   delete: deletePage,
-  report
+  report,
+  lickback
 }
 
 //============================= GET FUNCTIONS=========================//
@@ -66,10 +67,6 @@ function newPage(req, res) {
   res.render('peaces/new')
 }
 
-function report(req, res) {
-  res.render('peaces/report');
-}
-
 async function edit(req, res) {
   try {
     const peace = await Peace.findById(req.params.id);
@@ -120,4 +117,13 @@ async function report(req, res) {
 		reports: await Peace.find({})
 	}
   res.render('peaces/report', context);
+}
+
+async function lickback(req, res) {
+  try {
+    const peace = await Peace.findById(req.params.id);
+    res.render('peaces/licks', { peace });
+  } catch (error) {
+    console.log(error);
+  }
 }

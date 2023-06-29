@@ -1,0 +1,164 @@
+<%- include('../partials/header') %>
+
+<a href="javascript:history.back()">Back</a>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Licks</title>
+  <style>
+    .container {
+      display: flex;
+    }
+
+    body {
+      background-image: url('https://media.tenor.com/ShzdJcrguswAAAAC/burn-elmo.gif');
+      background-repeat: no-repeat;
+      background-size: cover;
+      color: white;
+    }
+
+    .video {
+      flex: 1;
+    }
+
+    .list {
+      flex: 1;
+      margin-left: 20px;
+    }
+
+    table {
+      width: 100%;
+    }
+
+    th, td {
+      padding: 5px;
+    }
+
+    .rating-container {
+      margin-top: 10px;
+      display: inline-block;
+    }
+
+    .rating-container input[type="radio"] {
+      display: none;
+    }
+
+    .rating-container label {
+      display: inline-block;
+      font-size: 24px;
+      color: gray;
+      cursor: pointer;
+    }
+
+    .rating-container label:hover,
+    .rating-container label:hover ~ label,
+    .rating-container input[type="radio"]:checked ~ label {
+      color: gold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Lick Page</h1>
+
+  <div class="container">
+    <div class="video">
+      <!-- Twitter embedded code -->
+      <%- `
+      <blockquote class="twitter-tweet">
+        <p lang="en" dir="ltr">You gotta get your lick back. 3x. My thing, get your lick back. Get your lick back! Razor on Baddies West <a href="https://t.co/G6KCScXNyz">pic.twitter.com/G6KCScXNyz</a></p>
+        &mdash; all reaction videos (@allreactionvids) <a href="https://twitter.com/allreactionvids/status/1624901928931950594?ref_src=twsrc%5Etfw">February 12, 2023</a>
+      </blockquote>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      ` %>
+    </div>
+
+    <div class="list">
+      <table>
+        <tr>
+          <th>Name:</th>
+          <td><%= peace.name %></td>
+        </tr>
+        <tr>
+          <th>Game:</th>
+          <td><%= peace.game %></td>
+        </tr>
+        <tr>
+          <th>Lick:</th>
+          <td>
+            <select id="lickSelect">
+              <option value="">Select Lick Type</option>
+              <option value="inGame">In Game</option>
+              <option value="inPerson">In Person</option>
+            </select>
+            <div id="secondaryOptions" style="display: none;">
+              <select id="secondarySelect">
+                <option value="">Select Secondary Option</option>
+              </select>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th></th>
+          <td id="secondarySelection"></td>
+        </tr>
+        <tr>
+          <th>Details:</th>
+          <td>
+            <input type="text" name="details" placeholder="Spill the tea on this lick">
+          </td>
+        </tr>
+        <tr>
+          <th>Rating:</th>
+          <td>
+            <div class="rating-container">
+              <input type="radio" name="rating" id="rating-1" value="1">
+              <label for="rating-1">&#9733;</label>
+              <input type="radio" name="rating" id="rating-2" value="2">
+              <label for="rating-2">&#9733;</label>
+              <input type="radio" name="rating" id="rating-3" value="3">
+              <label for="rating-3">&#9733;</label>
+              <input type="radio" name="rating" id="rating-4" value="4">
+              <label for="rating-4">&#9733;</label>
+              <input type="radio" name="rating" id="rating-5" value="5">
+              <label for="rating-5">&#9733;</label>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    var lickSelect = document.getElementById("lickSelect");
+    var secondaryOptions = document.getElementById("secondaryOptions");
+    var secondarySelect = document.getElementById("secondarySelect");
+    var secondarySelection = document.getElementById("secondarySelection");
+
+    lickSelect.addEventListener("change", function() {
+      var selectedValue = lickSelect.value;
+      if (selectedValue === "") {
+        secondaryOptions.style.display = "none";
+        secondarySelection.textContent = "";
+      } else if (selectedValue === "inGame") {
+        populateSecondaryOptions(["Blocked", "Muted", "Reported", "Trolled"]);
+      } else if (selectedValue === "inPerson") {
+        populateSecondaryOptions(["Cutoff", "Lovetap", "Trolled"]);
+      }
+    });
+
+    function populateSecondaryOptions(options) {
+      secondarySelect.innerHTML = "";
+      options.forEach(function(option) {
+        var optionElement = document.createElement("option");
+        optionElement.value = option;
+        optionElement.textContent = option;
+        secondarySelect.appendChild(optionElement);
+      });
+      secondaryOptions.style.display = "block";
+    }
+  </script>
+</body>
+</html>

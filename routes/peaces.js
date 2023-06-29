@@ -12,5 +12,6 @@ router.get('/:id', peacesCtrl.show);
 router.post('/all', peacesCtrl.create);
 router.put('/:id', peacesCtrl.update);
 router.delete('/:id', peacesCtrl.delete);
+router.post('/:id/lickback', peacesCtrl.lickback); 
 
 module.exports = router;
