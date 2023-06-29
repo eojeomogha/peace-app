@@ -29,10 +29,23 @@
       text-align: left;
       border-bottom: 1px solid #ddd;
     }
+    .create-button {
+      background-color: #007bff;
+      border-radius: 18px;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .create-button:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
 <body>
-  <h2>All Offenders</h2>
+  <h2>All Trolls</h2>
   
   <!-- Search portion -->
   <div class="search-container">
@@ -44,7 +57,7 @@
     </div>
   </div>
 
-  <a href="/new">Create New Offender</a>
+  <button class="create-button" onclick="location.href='/new'">Create New Offender</button>
   <table>
     <thead>
       <tr>

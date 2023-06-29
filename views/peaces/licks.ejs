@@ -107,11 +107,11 @@
         <tr>
           <th>Details:</th>
           <td>
-            <input type="text" name="details" placeholder="Spill the tea on this lick">
+            <textarea name="details" placeholder="Spill the tea on this lick" style="resize: both;"></textarea>
           </td>
         </tr>
         <tr>
-          <th>Rating:</th>
+          <th>How Did This Feel?:</th>
           <td>
             <div class="rating-container">
               <input type="radio" name="rating" id="rating-1" value="1">
@@ -159,6 +159,12 @@
       });
       secondaryOptions.style.display = "block";
     }
+
+    // Auto-select "In Person" if peace.game is "Irl"
+    <% if (peace.game === 'Irl') { %>
+      lickSelect.value = "inPerson";
+      populateSecondaryOptions(["Cutoff", "Lovetap", "Trolled"]);
+    <% } %>
   </script>
 </body>
 </html>
