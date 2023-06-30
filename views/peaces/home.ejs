@@ -5,9 +5,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>New Trolls</title>
+  <style>
+    body {
+      background-image: url('https://wompampsupport.azureedge.net/fetchimage?siteId=7575&v=2&jpgQuality=100&width=700&url=https%3A%2F%2Fi.kym-cdn.com%2Fentries%2Ficons%2Ffacebook%2F000%2F030%2F225%2Fmoomin.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    .content {
+      text-align: center;
+      margin-top: 200px;
+    }
+
+    .button {
+      background: linear-gradient(to right, #585232 50%, #3a4c62 50%);
+      color: white;
+      border: none;
+      height: 40px;
+      width: 220px;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.15s;
+      text-decoration: none;
+      padding: 10px 20px; 
+      font-size: 20px;
+    }
+
+    .button:hover {
+      background: linear-gradient(to right, #3a4c62 50%, #585232 50%);
+    }
+  </style>
 </head>
 <body>
-  <a href="/new">Create New Troll</a>
+  <div class="content">
+    <div class="button-container">
+      <a href="/new" class="button">Who Trolled Today?</a>
+    </div>
+  </div>
 </body>
 </html>

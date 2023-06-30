@@ -23,7 +23,7 @@ function home(req, res) {
 async function index(req, res) {
   // Pagination function
   const page = parseInt(req.query.page) || 1; 
-  const itemsPerPage = 6; 
+  const itemsPerPage = 8; 
 
   try {
     // Search function
